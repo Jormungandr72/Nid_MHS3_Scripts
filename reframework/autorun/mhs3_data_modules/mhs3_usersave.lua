@@ -42,7 +42,7 @@ function usersave.get_relay()
     end
 
     -- Get the _UserSaveData field
-    local ok_save, save = pcall(sdk.get_field, "_UserSaveData")
+    local ok_save, save = pcall(sdk.get_field, manager, "_UserSaveData")
     if not ok_save or not save then
         log_error("[get_relay()] Unable to retrieve the following field: _UserSaveData")
         return nil
@@ -51,7 +51,7 @@ function usersave.get_relay()
     end
 
     -- Get the _UserRelay field
-    local ok_relay, relay = pcall(sdk.get_field, "_UserRelay")
+    local ok_relay, relay = pcall(sdk.get_field, save, "_UserRelay")
     if not ok_relay or not relay then
         log_error("[get_relay()] Unable to retrieve the following field: _UserRelay")
         return nil
@@ -62,7 +62,23 @@ function usersave.get_relay()
     return relay
 end
 
--- get_story_param()
+function usersave.get_story_param()
+    -- Gets the user story related data such as flags, stored in field "_StoryParam"
+    -- Returns:
+    --   app.savedata.cStoryParam: story related save data
+
+    -- Get the _StoryParam field
+    local ok_story, story = pcall(sdk.get_field, get_relay(), "_StoryParam")
+    if not ok_story or not story then
+        log_error("[get_story_param()] Unable to retrieve the following field: _StoryParam")
+        return nil
+    else
+        log_info("[get_story_param()] Retrieved the following field: _StoryParam")
+    end
+
+    return story
+end
+
 -- get_item_param()
 -- get_player_param()
 -- get_equip_param()
