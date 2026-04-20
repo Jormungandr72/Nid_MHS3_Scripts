@@ -1,5 +1,5 @@
 -- MHS3 user save data module v1.0 by NidhoggX
--- Implemented:
+-- Implemented: get_relay(), get_story_param()
 -- TODO: get other fields, full list under "Functions to get user data"
 
 -- ==========================================
