@@ -30,10 +30,6 @@ I haven't learned any C languages up to this point. This is something to revisit
 
 # Planned Mods
 
-**Hard Mode**
-
-Ramp up difficulty of the game. Still need to brainstorm how to do that.
-
 **New Game+**
 
 Take 2 monsties from 1 save file and bring them into a new one. This would reset their genes, level and so on. This should also increase difficulty or add more content to the game; this would be a great place to add custom genes.
@@ -42,15 +38,13 @@ Take 2 monsties from 1 save file and bring them into a new one. This would reset
 
 I am a little dissapointed in the depth of the gene pool and would like to add more.
 
-**Remove Ratha**
-
-Already exists on Nexus but isn't optimal. I would like to make a more complete version.
-
-**Level Cap**
+**Level Caps**
 
 Prevent the player and monstie's from gaining levels for an added layer of difficulty. Planning two features:
 
 - Set level manually
 - Automatically adjust level based on enemy
 
-**TO BE CONTINUED**
+**More Ideas**
+
+Find more mod ideas in the root mod_ideas.md file.
