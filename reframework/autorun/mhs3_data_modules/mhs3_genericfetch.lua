@@ -1,6 +1,6 @@
 -- MHS3 generic fetch module v1.0 by NidhoggX
--- Implemented:
--- TODO:
+-- Implemented: fetch_field()
+-- TODO: fetch_method()
 
 -- ==========================================
 -- Establish as module
