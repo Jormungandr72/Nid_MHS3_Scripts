@@ -1,6 +1,6 @@
 -- MHS3 generic fetch module v1.0 by NidhoggX
--- Implemented: generic_field()
--- TODO: generic_method(), clear_cache()
+-- Implemented: generic_field(), clear_cache()
+-- TODO: generic_method()
 
 -- ==========================================
 -- Establish as module

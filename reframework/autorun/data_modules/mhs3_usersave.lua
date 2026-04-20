@@ -47,7 +47,7 @@ function usersave.get_relay()
         log_error("[get_relay()] Unable to retrieve the following field: _UserSaveData")
         return nil
     else
-        log_info("[get_relay()] Retrived the following field: _UserSaveData")
+        log_info("[get_relay()] Retrieved the following field: _UserSaveData")
     end
 
     -- Get the _UserRelay field
@@ -56,7 +56,7 @@ function usersave.get_relay()
         log_error("[get_relay()] Unable to retrieve the following field: _UserRelay")
         return nil
     else
-        log_info("[get_relay()] Retrived the following field: _UserRelay")
+        log_info("[get_relay()] Retrieved the following field: _UserRelay")
     end
 
     return relay
