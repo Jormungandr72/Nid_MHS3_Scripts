@@ -1,6 +1,5 @@
 -- MHS3 generic fetch module v1.0 by NidhoggX
--- Implemented: generic_field(), clear_cache()
--- TODO: generic_method()
+-- Implemented: generic_field(), generic_method(), clear_cache()
 
 -- ==========================================
 -- Establish as module
@@ -25,7 +24,7 @@ genericget.cache = {} -- Map of strings to methods/fields
 local hooks_installed = {} -- Map of hooked methods to booleans
 local example_data = {
     "app.SaveDataManager", -- Singleton
-    "_UserSaveData", -- Every field on the path to the target field
+    "_UserSaveData", -- One entry per field on the path to the target field
     "_UserRelay" -- Target field
 }
 
@@ -38,9 +37,9 @@ function genericget.generic_field(data_table)
     -- See the example_data table in this file for reference on formatting.
     -- Arguments:
     --   data_table (table): a table starting with a singleston string and ending with a target field
-    --   target ([varies]): the field to return
+    --   target (REField): the field to return
     -- Returns:
-    --   [varies]: the data type of the target field
+    --   REField: the data type of the target field
 
     -- Get the singleton
     local ok_single, single = pcall(sdk.get_managed_singleton, data_table[1]) -- lua tables start at index 1
@@ -74,6 +73,30 @@ function genericget.generic_field(data_table)
     return ret_field
 end
 
+function genericget.generic_method(obj, method_name)
+    -- Gets a specified method from the game.
+    -- Arguments:
+    --   obj (REField): the object that the method belongs to
+    --   method_name (String): a string representing the name of the method
+    -- Returns:
+    --   REMethod: the data type of the target method
+
+    -- Get the method
+    local ok_method, method = pcall(obj.get_method, obj, method_name)
+    if not ok_method or not method then
+        log_error("[generic_field()] Unable to retrieve the following method: " .. method_name .. "()")
+        return nil
+    else
+        log_info("[generic_field()] Retrieved the following method: " .. method_name .. "()")
+    end
+
+    -- Cache and return the target field
+    genericget.cache[method_name] = method
+    log_info("[generic_field()] Cached the following method: " .. method_name .. "()")
+    log_info("[generic_field()] Returning the following method: " .. method_name .. "()")
+    return method
+end
+
 function genericget.clear_cache()
     -- Resets every key in the cache to nil, clearing it.
 
@@ -82,8 +105,6 @@ function genericget.clear_cache()
     end
     log_info("[clear_cache()] Cleared cache")
 end
-
--- generic_method()
 
 -- ==========================================
 -- Clear cache when REFramework saves it's config
