@@ -74,5 +74,19 @@ function genericget.generic_field(data_table)
     return ret_field
 end
 
+function genericget.clear_cache()
+    -- Resets every key in the cache to nil, clearing it.
+
+    for k in pairs(genericget.cache) do
+        genericget.cache[k] = nil
+    end
+    log_info("[clear_cache()] Cleared cache")
+end
+
 -- generic_method()
--- clear_cache()
+
+-- ==========================================
+-- Clear cache when REFramework saves it's config
+-- ==========================================
+
+re.on_config_save(genericget.clear_cache)
